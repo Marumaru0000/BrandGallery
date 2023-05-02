@@ -1,6 +1,3 @@
-<?php
-header('Content-Type: text/html; charset=utf-8');
-?>
 <?php 
 error_reporting (E_ALL & ~E_NOTICE & ~E_WARNING & ~E_STRICT & ~E_DEPRECATED);
 //
@@ -284,30 +281,30 @@ if (!$_REQUEST["mode"]) {
 	// 本文へ入力値の設定
 	foreach ($form_input as $key => $val) {
 		if ($val["func"] == 13) {	// File
-			$mail_body .= "■" . $val["title"] . "：" . $form[$val["name"] . "_file"] . "\n";
+			$mail_body .= "■" . $val["title"] . "&#058;" . $form[$val["name"] . "_file"] . "\n";
 		} else if ($val["func"] == 10) {
-			$mail_body .= "■" . $val["title"] . "：" . $pref_list[$form[$val["name"] . "_pref"]] . $form[$val["name"] . "_address"] . "\n";
+			$mail_body .= "■" . $val["title"] . "&#058;" . $pref_list[$form[$val["name"] . "_pref"]] . $form[$val["name"] . "_address"] . "\n";
 		} else if ($val["func"] == 11) {
-			$mail_body .= "■" . $val["title"] . "：" . $form[$val["name"] . "_year"] . "年" . 
+			$mail_body .= "■" . $val["title"] . "&#058;" . $form[$val["name"] . "_year"] . "年" . 
 				$form[$val["name"] . "_month"] . "月" . $form[$val["name"] . "_day"] . "日\n";
 		} else if ($val["func"] == 12) {
-			$mail_body .= "■" . $val["title"] . "：" . $form[$val["name"] . "_month"] . "月" . $form[$val["name"] . "_day"] . "日\n";
+			$mail_body .= "■" . $val["title"] . "&#058;" . $form[$val["name"] . "_month"] . "月" . $form[$val["name"] . "_day"] . "日\n";
 		} else if ($val["func"] == 3) {	// 単一選択（ラジオボタン）
-			$mail_body .= "■" . $val["title"] . "：" . $form_input[$val["name"]]["list"][$form[$val["name"]]] . "\n";
+			$mail_body .= "■" . $val["title"] . "&#058;" . $form_input[$val["name"]]["list"][$form[$val["name"]]] . "\n";
 		} else if ($val["func"] == 4) {	// 複数選択（チェックボックス）
 			if ($form[$val["name"]]) {
 				$ary = array();
 				foreach ($form[$val["name"]] as $val2) {
 					$ary[] = $form_input[$val["name"]]["list"][$val2];
 				}
-				$mail_body .= "■" . $val["title"] . "：" . implode("、", $ary) . "\n";
+				$mail_body .= "■" . $val["title"] . "&#058;" . implode("、", $ary) . "\n";
 			}
 		} else if ($val["func"] == 5) {	// 選択（プルダウン）
-			$mail_body .= "■" . $val["title"] . "：" . $form_input[$val["name"]]["list"][$form[$val["name"]]] . "\n";
+			$mail_body .= "■" . $val["title"] . "&#058;" . $form_input[$val["name"]]["list"][$form[$val["name"]]] . "\n";
 		} else if ($val["func"] == 6) {	// 複数個1行テキスト入力
-			$mail_body .= "■" . $val["title"] . "：\n";
+			$mail_body .= "■" . $val["title"] . ":\n";
 			foreach ($form_input[$val["name"]]["list"] as $key => $val2) {
-				$mail_body .= "　" . $val2 . "：" . $form[$val["name"]][$key] . "\n";
+				$mail_body .= " " . $val2 . "&#058;" . $form[$val["name"]][$key] . "\n";
 			}
 		} else if ($val["func"] == 14) {	// キャプチャ
 			// キャプチャが存在する場合、そのチェックが通らないとメールの送信はしない
@@ -318,7 +315,7 @@ if (!$_REQUEST["mode"]) {
 				exit;
 			}
 		} else {
-			$mail_body .= "■" . $val["title"] . "：" . $form[$val["name"]] . "\n";
+			$mail_body .= "■" . $val["title"] . "&#058;" . $form[$val["name"]] . "\n";
 		}
 	}
 	unset($_SESSION["captcha"]);

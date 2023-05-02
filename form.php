@@ -367,7 +367,7 @@ echo eval("?>" . $contents);
  *
  * 差し込み処理、長いサブジェクトに対応
  */
-function sendmail($mail_from, $mail_to, $mail_subject, $body, $attach, $from_name=null)
+function sendmail($mail_from, $mail_to, $mail_subject, $body, $attach, $from_name=null,$reply="")
 {
 	$mail_from = trim($mail_from);
 	$mail_to = trim($mail_to);

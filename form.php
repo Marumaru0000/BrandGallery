@@ -1,3 +1,6 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+?>
 <?php 
 error_reporting (E_ALL & ~E_NOTICE & ~E_WARNING & ~E_STRICT & ~E_DEPRECATED);
 //
@@ -367,7 +370,7 @@ echo eval("?>" . $contents);
  *
  * 差し込み処理、長いサブジェクトに対応
  */
-function sendmail($mail_from, $mail_to, $mail_subject, $body, $attach, $from_name=null,$reply="")
+function sendmail($mail_from, $mail_to, $mail_subject, $body, $attach, $from_name=null, $reply="")
 {
 	$mail_from = trim($mail_from);
 	$mail_to = trim($mail_to);
